@@ -1,1 +1,2 @@
-exercise
+0|go to gym
+1|study python
