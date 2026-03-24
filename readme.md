@@ -1,14 +1,19 @@
-# Todo Project
+# Todo CLI App
 
-A simple command-line todo app built with Python.
+A simple command-line todo application built with Python.
 
 ## Features
 - Add tasks
-- View tasks
+- View all tasks
 - Delete tasks
 - Mark tasks as completed
+- View unfinished tasks
 
-## How to run
+## Tech Stack
+- Python
+- File-based storage
+
+## Run
 
 ```bash
 python3 main.py

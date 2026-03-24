@@ -14,6 +14,16 @@ def load_tasks():
     except FileNotFoundError:
         return []
 
+def view_unfinished_tasks(tasks):
+    print("\n=== UNFINISHED TASKS ===")
+    found = False
+    for i, task in enumerate(tasks, start=1):
+        if not task["done"]:
+            print(f"{i}. [ ] {task['task']}")
+            found = True
+    if not found:
+        print("No unfinished tasks!")
+    print()
 
 def save_tasks(tasks):
     with open("tasks.txt", "w", encoding="utf-8") as f:
@@ -74,9 +84,12 @@ def mark_task_done(tasks):
 
     index = int(choice) - 1
     if 0 <= index < len(tasks):
-        tasks[index]["done"] = True
-        save_tasks(tasks)
-        print(f"Marked as done: {tasks[index]['task']}\n")
+       if tasks[index]["done"]:
+          print("Task already completed.\n")
+       else:
+          tasks[index]["done"] = True
+          save_tasks(tasks)
+          print(f"Marked as done: {tasks[index]['task']}\n")
     else:
         print("Task number out of range.\n")
 
@@ -90,6 +103,7 @@ def main():
         print("3. Delete task")
         print("4. Mark task as done")
         print("5. Exit")
+        print("6. View unfinished tasks")
 
         choice = input("Choose an option: ").strip()
 
@@ -104,6 +118,8 @@ def main():
         elif choice == "5":
             print("Goodbye.")
             break
+        elif choice == "6":
+            view_unfinished_tasks(tasks)
         else:
             print("Invalid choice.\n")
 
